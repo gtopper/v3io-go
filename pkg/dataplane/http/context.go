@@ -949,7 +949,7 @@ func (c *context) encodeTypedAttributes(attributes map[string]interface{}) (map[
 		typedAttributes[attributeName] = make(map[string]interface{})
 		switch value := attributeValue.(type) {
 		default:
-			return nil, fmt.Errorf("Unexpected attribute type for %s: %T", attributeName, reflect.TypeOf(attributeValue))
+			return nil, fmt.Errorf("Unexpected attribute type for %s: %T", attributeName, attributeValue)
 		case int:
 			typedAttributes[attributeName]["N"] = strconv.Itoa(value)
 			// this is a tmp bypass to the fact Go maps Json numbers to float64
