@@ -930,7 +930,8 @@ func (c *context) sendRequest(dataPlaneInput *v3io.DataPlaneInput,
 		"Tx",
 		"uri", uriStr,
 		"method", method,
-		"body-length", len(body))
+		"body-length", len(body),
+		"body", string(body))
 
 	if dataPlaneInput.Timeout <= 0 {
 		err = c.httpClient.Do(request, response.HTTPResponse)
@@ -952,7 +953,8 @@ func (c *context) sendRequest(dataPlaneInput *v3io.DataPlaneInput,
 		c.logger.DebugWithCtx(dataPlaneInput.Ctx,
 			"Rx",
 			"statusCode", statusCode,
-			"Content-Length", contentLength)
+			"Content-Length", contentLength,
+			"response", string(response.HTTPResponse.Body()))
 	}
 
 	// did we get a 2xx response?
