@@ -953,8 +953,7 @@ func (c *context) sendRequest(dataPlaneInput *v3io.DataPlaneInput,
 		c.logger.DebugWithCtx(dataPlaneInput.Ctx,
 			"Rx",
 			"statusCode", statusCode,
-			"Content-Length", contentLength,
-			"response", string(response.HTTPResponse.Body()))
+			"Content-Length", contentLength)
 	}
 
 	// did we get a 2xx response?
